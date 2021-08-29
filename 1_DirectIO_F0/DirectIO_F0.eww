@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\..\2_Base\Base.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\DirectIO_F0.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+
