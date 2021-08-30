@@ -14,12 +14,18 @@
       </Debug-Log>
       <Workspace>
         <ColumnWidths>
-          <Column0>124</Column0>
+          <Column0>198</Column0>
           <Column1>27</Column1>
           <Column2>27</Column2>
           <Column3>27</Column3>
         </ColumnWidths>
       </Workspace>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1107</ColumnWidth1>
+        <ColumnWidth2>295</ColumnWidth2>
+        <ColumnWidth3>73</ColumnWidth3>
+      </Build>
     </Static>
     <Windows>
       <Wnd0>
@@ -45,12 +51,56 @@
             <Factory>Debug-Log</Factory>
             <Session/>
           </Tab>
+          <Tab>
+            <Identity>TabID-28614-14085</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
         </Tabs>
-        <SelectedTab>0</SelectedTab>
+        <SelectedTab>1</SelectedTab>
       </Wnd1>
     </Windows>
     <Editor>
-      <Pane/>
+      <Pane>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\button.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>0</YPos2>
+          <SelStart2>46</SelStart2>
+          <SelEnd2>46</SelEnd2>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\button.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>0</YPos2>
+          <SelStart2>79</SelStart2>
+          <SelEnd2>79</SelEnd2>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\io.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+          <XPos2>0</XPos2>
+          <YPos2>42</YPos2>
+          <SelStart2>855</SelStart2>
+          <SelEnd2>855</SelEnd2>
+        </Tab>
+        <ActiveTab>2</ActiveTab>
+      </Pane>
       <ActivePane>0</ActivePane>
       <Sizes>
         <Pane>
@@ -78,14 +128,14 @@
                 <Top>-2</Top>
                 <Left>-2</Left>
                 <Bottom>538</Bottom>
-                <Right>198</Right>
+                <Right>272</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>200</xscreen>
                 <yscreen>200</yscreen>
                 <sizeHorzCX>130208</sizeHorzCX>
                 <sizeHorzCY>256082</sizeHorzCY>
-                <sizeVertCX>130208</sizeVertCX>
+                <sizeVertCX>178385</sizeVertCX>
                 <sizeVertCY>691421</sizeVertCY>
               </Rect>
             </Wnd0>

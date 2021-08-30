@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.80.1.11864/W32 for ARM                29/Aug/2021  20:06:27
+# IAR ELF Linker V7.80.1.11864/W32 for ARM                29/Aug/2021  21:24:02
 # Copyright 2007-2016 IAR Systems AB.
 #
 #    Output file  =  
@@ -10,6 +10,8 @@
 #        C:\Users\dell\Documents\ARM Programlama
 #        Kursu\IAR\STM32F0\Projects\4_Button\Debug\List\Button.map
 #    Command line =  
+#        "C:\Users\dell\Documents\ARM Programlama
+#        Kursu\IAR\STM32F0\Projects\4_Button\Debug\Obj\button.o"
 #        "C:\Users\dell\Documents\ARM Programlama
 #        Kursu\IAR\STM32F0\Projects\4_Button\Debug\Obj\io.o"
 #        "C:\Users\dell\Documents\ARM Programlama

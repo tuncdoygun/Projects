@@ -1959,6 +1959,12 @@
     </file>
   </group>
   <file>
+    <name>$PROJ_DIR$\button.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\button.h</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\io.c</name>
   </file>
   <file>
