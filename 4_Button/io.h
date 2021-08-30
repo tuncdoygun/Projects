@@ -60,6 +60,11 @@ enum {
   IOP_U1TX,
   IOP_U2RX,
   IOP_U2TX,
+  
+  // Push Button
+  IOP_BTN_SET,
+  IOP_BTN_UP,
+  IOP_BTN_DN,
 };
 
 #ifdef _IOS_ // birkere tanýmlanmasý gereken
@@ -82,6 +87,11 @@ IO_PIN _ios[] = {
   {IO_PORT_B, 6},
   {IO_PORT_A, 3},
   {IO_PORT_A, 2},
+  
+  // Push Button
+  {IO_PORT_A, 0},
+  {IO_PORT_A, 1},
+  {IO_PORT_A, 2},
 };
 
 IO_MODE _iom[] = {
@@ -100,6 +110,10 @@ IO_MODE _iom[] = {
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_NOPULL},    // UART1 TX
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_NOPULL},
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_NOPULL},
+  
+  {IO_MODE_INPUT, IO_OTYPE_OD, IO_PUPD_UP},
+  {IO_MODE_INPUT, IO_OTYPE_OD, IO_PUPD_UP},
+  {IO_MODE_INPUT, IO_OTYPE_OD, IO_PUPD_UP},
 };
 
 GPIO_TypeDef *_GPIO_Ports[] = {

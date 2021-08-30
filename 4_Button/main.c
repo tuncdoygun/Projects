@@ -3,8 +3,9 @@
 
 #include "system.h"
 #include "io.h"
-#include "lcdm.h"
+// #include "lcdm.h"
 #include "uart.h"
+#include "button.h"
 
 void init(void)
 {
@@ -23,6 +24,9 @@ void init(void)
   
   // Konsol baþlangýç
   Sys_ConsoleInit();
+  
+  // Button baslangic
+  BTN_InitButtons();
 }
 
 //int c; // debug modda global deðiþkenlerin deðeri görülebiliyor.IO_Read() için.
@@ -109,44 +113,73 @@ void Task_Print(void)
   UART_printf("Count: %10lu\r", count++);
 }
 
+void Task_Button()
+{
+  static unsigned count = 0;
+  
+  if(g_Buttons[BTN_SET]){// BTN_SET'ten isaret geldi
+    // SET isle
+    UART_printf("SET (%u)\n", ++count);
+    
+    // g_Buttons[BTN_SET] = 0; // binary semaphore
+    --g_Buttons[BTN_SET]; // sýfýra gelene kadar hep iþleyecek
+  }
+  if (g_Buttons[BTN_UP]){ // BTN_UP'ten iþaret geldi
+    // SET iþle
+    UART_printf("UP (%u)\n", ++count);
+    
+    //g_Buttons[BTN_UP] = 0;
+    --g_Buttons[BTN_UP]; // sýfýra gelene kadar hep iþleyecek
+  }
+  
+  if (g_Buttons[BTN_DN]){ // BTN_UP'ten iþaret geldi
+    // DN iþle
+    UART_printf("DN (%u)\n", ++count);
+    
+    //g_Buttons[BTN_DN] = 0;
+    --g_Buttons[BTN_DN]; // sýfýra gelene kadar hep iþleyecek
+  }
+  
+  //////////////////////////////////////
+#ifdef BTN_LONG_PRESS
+  if (g_ButtonsL[BTN_SET]){
+    // SET iþle
+    UART_printf("SET_LONG (%u)\n", ++count);
+    
+    g_ButtonsL[BTN_SET] = 0; //binary semaphore
+    //--g_Buttons[BTN_SET]; // sýfýra gelene kadar hep iþleyecek
+  }
+  
+  if (g_ButtonsL[BTN_UP]){ // BTN_UP'ten iþaret geldi
+    // SET iþle
+    UART_printf("UP_LONG (%u)\n", ++count);
+    
+    g_ButtonsL[BTN_UP] = 0;
+    // --g_Buttons[BTN_UP]; // sýfýra gelene kadar hep iþleyecek
+  }
+  
+  if (g_ButtonsL[BTN_DN]){ // BTN_UP'ten iþaret geldi
+    // DN iþle
+    UART_printf("DN_LONG (%u)\n", ++count);
+    
+    g_ButtonsL[BTN_DN] = 0;
+    // --g_Buttons[BTN_DN]; // sýfýra gelene kadar hep iþleyecek
+  }
+#endif
+}
+
 int main()
 {
   // Baþlangýç yapýlandýrmalarý
   init();
-    
-  /*UART_Send(g_conUART, 'A');
-  DelayMs(1000);
-  UART_Send(g_conUART, 'B');
-  DelayMs(1000);
-  UART_Send(g_conUART, 'C');
-  DelayMs(1000);
-  UART_Send(g_conUART, 'D');
-  DelayMs(1000);*/
   
-  UART_puts("\n\nMerhaba dunya!\n");
+  UART_printf("Button Deneme");
   
   while(1) {
     Task_LED();
     //Task_Print();
-       
-    /*{ // Echo test
-      unsigned char c;
-        if(UART_DataReady(g_conUART)){
-          c = UART_Recv(g_conUART);
-          UART_Send(g_conUART, c);
-        }
-    }*/
-    {
-      unsigned char c;
-      if(UART_DataReady(g_conUART)){
-        UART_putch('\n');
-        do {
-          c = UART_Recv(g_conUART);
-          UART_Send(g_conUART, c);
-        } while(c != '\r');
-        UART_putch('\n');
-      }
-    }
+ 
+    Task_Button();
     
   }
   //return 0;

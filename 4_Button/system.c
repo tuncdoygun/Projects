@@ -5,6 +5,7 @@
 #include "system.h"
 #include "lcdm.h"
 #include "uart.h"
+#include "button.h"
 
 #define __STDIN          0 // standart in file handles
 #define __STDOUT         1
@@ -38,6 +39,8 @@ void Sys_ClockTick(void)
 {
   // elapsed time counter.1 ms'de bir deðer 1 artacak.
   ++_tmTick;
+  
+  BTN_ScanButtons();
 }
 
 clock_t clock(void)
@@ -68,16 +71,23 @@ void Sys_ConsoleInit()
 {
   //LCD_Init();
   UART_Init(g_conUART, 9600);
-  //setvbuf(stdout, NULL, _IONBF, 0); // standart lib içinde.Buffer'ý devre dýþý býrakmak için.
-									  // bazen buffer dolmadýðý için ekranda birþey görülmüyor.Bufferlý çalýþtýðý zaman hýzlý ama senkronluðu kayboluyor.
+#ifndef __IAR_SYSTEMS_ICC
+  //setvbuf(stdout, NULL, _IONBF, 0); // standart lib icinde.Buffer'i devre disi býrakmak icin.
+                                      // bazen buffer dolmadigi icin ekranda birsey gorulmuyor.Bufferli çalistigi zaman hizli ama senkronlugu kayboluyor.
+#endif										  
 }
 
 void __putch(unsigned char c)
 {
   //LCD_putch(c);
+  UART_putch(c);
 }
 
+#ifdef __IAR_SYSTEMS_ICC
 size_t __write(int handle, const unsigned char *buffer, size_t size)
+#else
+size_t _write(int handle, const unsigned char *buffer, size_t size)
+#endif
 {
   size_t nChars = 0;
   
