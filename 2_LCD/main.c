@@ -117,7 +117,7 @@ int main()
   // 03.08.2021
   LCD_DisplayOn(LCD_MODE_ON | LCD_MODE_CURSOR);
   
-  LCD_SetCursor(0x04);
+  LCD_SetCursor(0x00);
   LCD_PutChar('D'); // cursor otomatik 1 arttýðýndan dolayý
   LCD_PutChar('e');
   LCD_PutChar('n');
@@ -134,7 +134,7 @@ int main()
   
   while(1) {
     Task_LED();
-    // Task_Print();
+    Task_Print();
   }
   //return 0;
 }

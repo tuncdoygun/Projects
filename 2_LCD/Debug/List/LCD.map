@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.80.1.11864/W32 for ARM                26/Aug/2021  22:35:55
+# IAR ELF Linker V7.80.1.11864/W32 for ARM                05/Sep/2021  13:10:26
 # Copyright 2007-2016 IAR Systems AB.
 #
 #    Output file  =  
@@ -58,83 +58,105 @@ __SystemLibrary = DLib
 "P2":  place in [from 0x20000000 to 0x20001fff] { rw, block CSTACK, block HEAP };
 initialize by copy { rw };
 
-  Section            Kind        Address   Size  Object
-  -------            ----        -------   ----  ------
-"A0":                                      0xc0
-  .intvec            ro code  0x08000000   0xc0  startup_stm32f051.o [1]
-                            - 0x080000c0   0xc0
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0xc0
+  .intvec            ro code  0x08000000    0xc0  startup_stm32f051.o [1]
+                            - 0x080000c0    0xc0
 
-"P1":                                     0x8de
-  .text              ro code  0x080000c0  0x164  system_stm32f0xx.o [1]
-  .text              ro code  0x08000224  0x158  lcdm.o [1]
-  .text              ro code  0x0800037c   0xa8  io.o [1]
-  .text              ro code  0x08000424  0x134  system.o [1]
-  .text              ro code  0x08000558   0xa0  stm32f0xx_gpio.o [1]
-  .text              ro code  0x080005f8   0x24  stm32f0xx_rcc.o [1]
-  .text              ro code  0x0800061c   0xae  I32DivModFast.o [5]
-  .text              ro code  0x080006ca    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x080006cc    0x2  IntDivZer.o [5]
-  .text              ro code  0x080006ce    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x080006d0   0xfe  main.o [1]
-  .text              ro code  0x080007ce    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x080007d0   0x3c  startup_stm32f051.o [1]
-  .text              ro code  0x0800080c   0x3c  packbits_init_single.o [5]
-  .text              ro code  0x08000848   0x28  data_init.o [5]
-  .iar.init_table    const    0x08000870   0x10  - Linker created -
-  .text              ro code  0x08000880   0x1a  cmain.o [5]
-  .text              ro code  0x0800089a    0x4  low_level_init.o [3]
-  .text              ro code  0x0800089e    0x8  exit.o [3]
-  .text              ro code  0x080008a6    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x080008a8    0xa  cexit.o [5]
-  .text              ro code  0x080008b2    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x080008b4   0x14  exit.o [6]
-  .rodata            const    0x080008c8   0x18  system.o [1]
-  .text              ro code  0x080008e0   0x12  stm32f0xx_it.o [1]
-  .text              ro code  0x080008f2    0xc  cstartup_M.o [5]
-  .text              ro code  0x080008fe    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000900    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000902    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000904    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000906    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000908    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800090a    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800090c    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800090e    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000910    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000912    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000914    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000916    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000918    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800091a    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800091c    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800091e    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000920    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000922    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000924    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000926    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x08000928    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800092a    0x2  startup_stm32f051.o [1]
-  .text              ro code  0x0800092c    0x2  startup_stm32f051.o [1]
-  .rodata            const    0x0800092e    0x0  packbits_init_single.o [5]
-  Initializer bytes  const    0x0800092e   0x70  <for P2-1>
-                            - 0x0800099e  0x8de
+"P1":                                     0x1f44
+  .text              ro code  0x080000c0   0xeb6  xprintffull.o [3]
+  .text              ro code  0x08000f76    0x14  strchr.o [5]
+  .text              ro code  0x08000f8a    0x10  strlen.o [5]
+  .text              ro code  0x08000f9a    0x18  memchr.o [5]
+  .text              ro code  0x08000fb2    0x6a  I64DivMod.o [5]
+  .text              ro code  0x0800101c    0x5c  ABImemcpy.o [5]
+  .text              ro code  0x08001078    0x32  DblCmpLe.o [4]
+  .text              ro code  0x080010aa    0x32  DblCmpGe.o [4]
+  .text              ro code  0x080010dc    0x80  xdscale.o [4]
+  .text              ro code  0x0800115c    0x52  DblToI32.o [4]
+  .text              ro code  0x080011ae     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x080011b0    0x34  I32ToDbl.o [4]
+  .text              ro code  0x080011e4   0x1a8  DblAddSub.o [4]
+  .text              ro code  0x0800138c    0xe0  I32DivModFast.o [5]
+  .text              ro code  0x0800146c   0x184  DblMul.o [4]
+  .text              ro code  0x080015f0    0xc2  DblDiv.o [4]
+  .text              ro code  0x080016b2    0x20  div.o [3]
+  .text              ro code  0x080016d2     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x080016d4     0x2  I64DivZer.o [5]
+  .text              ro code  0x080016d6     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x080016d8     0x2  IntDivZer.o [5]
+  .text              ro code  0x080016da   0x188  lcdm.o [1]
+  .text              ro code  0x08001862     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001864    0xa8  io.o [1]
+  .text              ro code  0x0800190c   0x170  system.o [1]
+  .text              ro code  0x08001a7c    0xa0  stm32f0xx_gpio.o [1]
+  .text              ro code  0x08001b1c    0x24  stm32f0xx_rcc.o [1]
+  .text              ro code  0x08001b40   0x164  system_stm32f0xx.o [1]
+  .text              ro code  0x08001ca4   0x122  main.o [1]
+  .text              ro code  0x08001dc6     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001dc8    0x24  printf.o [3]
+  .text              ro code  0x08001dec    0x3c  startup_stm32f051.o [1]
+  .text              ro code  0x08001e28    0x3c  packbits_init_single.o [5]
+  .text              ro code  0x08001e64    0x28  data_init.o [5]
+  .text              ro code  0x08001e8c    0x24  putchar.o [3]
+  .iar.init_table    const    0x08001eb0    0x10  - Linker created -
+  .text              ro code  0x08001ec0    0x1a  cmain.o [5]
+  .text              ro code  0x08001eda     0x4  low_level_init.o [3]
+  .text              ro code  0x08001ede     0x8  exit.o [3]
+  .text              ro code  0x08001ee6     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001ee8     0xa  cexit.o [5]
+  .text              ro code  0x08001ef2     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001ef4    0x14  exit.o [6]
+  .rodata            const    0x08001f08    0x18  system.o [1]
+  .rodata            const    0x08001f20    0x18  xprintffull.o [3]
+  .text              ro code  0x08001f38    0x16  xprout.o [3]
+  .text              ro code  0x08001f4e    0x12  stm32f0xx_it.o [1]
+  .rodata            const    0x08001f60     0xc  main.o [1]
+  .text              ro code  0x08001f6c     0xc  cstartup_M.o [5]
+  .text              ro code  0x08001f78     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f7a     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f7c     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f7e     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f80     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f82     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f84     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f86     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f88     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f8a     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f8c     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f8e     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f90     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f92     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f94     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f96     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f98     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f9a     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f9c     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001f9e     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001fa0     0x2  startup_stm32f051.o [1]
+  .text              ro code  0x08001fa2     0x2  startup_stm32f051.o [1]
+  .rodata            const    0x08001fa4     0x0  packbits_init_single.o [5]
+  Initializer bytes  const    0x08001fa4    0x60  <for P2-1>
+                            - 0x08002004  0x1f44
 
-"P2", part 1 of 2:                         0xb5
-  P2-1                        0x20000000   0xb5  <Init block>
-    .data            inited   0x20000000   0x38  io.o [1]
-    .data            inited   0x20000038   0x54  io.o [1]
-    .data            inited   0x2000008c   0x18  io.o [1]
-    .data            inited   0x200000a4    0x4  system_stm32f0xx.o [1]
-    .bss             inited   0x200000a8    0x4  main.o [1]
-    .bss             inited   0x200000ac    0x4  main.o [1]
-    .bss             inited   0x200000b0    0x4  system.o [1]
-    .bss             inited   0x200000b4    0x1  main.o [1]
-                            - 0x200000b5   0xb5
+"P2", part 1 of 2:                          0xb9
+  P2-1                        0x20000000    0xb9  <Init block>
+    .data            inited   0x20000000    0x38  io.o [1]
+    .data            inited   0x20000038    0x54  io.o [1]
+    .data            inited   0x2000008c    0x18  io.o [1]
+    .data            inited   0x200000a4     0x4  system_stm32f0xx.o [1]
+    .bss             inited   0x200000a8     0x4  main.o [1]
+    .bss             inited   0x200000ac     0x4  main.o [1]
+    .bss             inited   0x200000b0     0x4  main.o [1]
+    .bss             inited   0x200000b4     0x4  system.o [1]
+    .bss             inited   0x200000b8     0x1  main.o [1]
+                            - 0x200000b9    0xb9
 
-"P2", part 2 of 2:                        0x800
-  CSTACK                      0x200000b8  0x800  <Block>
-    CSTACK           uninit   0x200000b8  0x800  <Block tail>
-                            - 0x200008b8  0x800
+"P2", part 2 of 2:                         0x800
+  CSTACK                      0x200000c0   0x800  <Block>
+    CSTACK           uninit   0x200000c0   0x800  <Block tail>
+                            - 0x200008c0   0x800
 
 
 *******************************************************************************
@@ -144,10 +166,10 @@ initialize by copy { rw };
           Address     Size
           -------     ----
 Copy/packbits (__iar_packbits_init_single3)
-    1 source range, total size 0x70 (61% of destination):
-          0x0800092e  0x70
-    1 destination range, total size 0xb5:
-          0x20000000  0xb5
+    1 source range, total size 0x60 (51% of destination):
+          0x08001fa4  0x60
+    1 destination range, total size 0xb9:
+          0x20000000  0xb9
 
 
 
@@ -158,42 +180,61 @@ Copy/packbits (__iar_packbits_init_single3)
     Module                  ro code  ro data  rw data
     ------                  -------  -------  -------
 C:\Users\dell\Documents\ARM Programlama Kursu\IAR\STM32F0\Projects\2_LCD\Debug\Obj: [1]
-    io.o                        168      101      164
-    lcdm.o                      344
-    main.o                      254        6        9
+    io.o                        168       85      164
+    lcdm.o                      392
+    main.o                      290       19       13
     startup_stm32f051.o         310
     stm32f0xx_gpio.o            160
     stm32f0xx_it.o               18
     stm32f0xx_rcc.o              36
-    system.o                    308       27        4
+    system.o                    368       26        4
     system_stm32f0xx.o          356        2        4
     -------------------------------------------------
-    Total:                    1 954      136      181
+    Total:                    2 098      132      185
 
 command line: [2]
     -------------------------------------------------
     Total:
 
 dl6M_tln.a: [3]
+    div.o                        32
     exit.o                        8
     low_level_init.o              4
+    printf.o                     36
+    putchar.o                    36
+    xprintffull.o             3 766       24
+    xprout.o                     22
     -------------------------------------------------
-    Total:                       12
+    Total:                    3 904       24
 
 m6M_tl.a: [4]
+    DblAddSub.o                 424
+    DblCmpGe.o                   50
+    DblCmpLe.o                   50
+    DblDiv.o                    194
+    DblMul.o                    388
+    DblToI32.o                   82
+    I32ToDbl.o                   52
+    xdscale.o                   128
     -------------------------------------------------
-    Total:
+    Total:                    1 368
 
 rt6M_tl.a: [5]
-    I32DivModFast.o             174
+    ABImemcpy.o                  92
+    I32DivModFast.o             224
+    I64DivMod.o                 106
+    I64DivZer.o                   2
     IntDivZer.o                   2
     cexit.o                      10
     cmain.o                      26
     cstartup_M.o                 12
     data_init.o                  40
+    memchr.o                     24
     packbits_init_single.o       60
+    strchr.o                     20
+    strlen.o                     16
     -------------------------------------------------
-    Total:                      324
+    Total:                      634
 
 shb_l.a: [6]
     exit.o                       20
@@ -202,81 +243,116 @@ shb_l.a: [6]
 
     Linker created                        16    2 048
 -----------------------------------------------------
-    Grand Total:              2 310      152    2 229
+    Grand Total:              8 024      172    2 233
 
 
 *******************************************************************************
 *** ENTRY LIST
 ***
 
-Entry                      Address  Size  Type      Object
------                      -------  ----  ----      ------
-.iar.init_table$$Base   0x08000870         --   Gb  - Linker created -
-.iar.init_table$$Limit  0x08000880         --   Gb  - Linker created -
-?main                   0x08000881        Code  Gb  cmain.o [5]
-CSTACK$$Base            0x200000b8         --   Gb  - Linker created -
-CSTACK$$Limit           0x200008b8         --   Gb  - Linker created -
-DelayMs                 0x08000507  0x14  Code  Gb  system.o [1]
-GPIO_Init               0x08000559  0xa0  Code  Gb  stm32f0xx_gpio.o [1]
-HardFault_Handler       0x080008e3   0x4  Code  Gb  stm32f0xx_it.o [1]
-IO_Init                 0x0800037d  0x5a  Code  Gb  io.o [1]
-IO_Write                0x080003d7  0x42  Code  Gb  io.o [1]
-LCD_Clear               0x080002f3  0x10  Code  Gb  lcdm.o [1]
-LCD_DisplayOn           0x080002e3  0x10  Code  Gb  lcdm.o [1]
-LCD_Init                0x08000313  0x6a  Code  Gb  lcdm.o [1]
-LCD_PutChar             0x080002cd  0x16  Code  Gb  lcdm.o [1]
-LCD_SendCmd             0x080002b7  0x16  Code  Gb  lcdm.o [1]
-LCD_SendCmdL            0x08000289  0x16  Code  Lc  lcdm.o [1]
-LCD_SendData            0x0800029f  0x18  Code  Gb  lcdm.o [1]
-LCD_SendDataL           0x08000225  0x64  Code  Lc  lcdm.o [1]
-LCD_SetCursor           0x08000303  0x10  Code  Gb  lcdm.o [1]
-NMI_Handler             0x080008e1   0x2  Code  Gb  stm32f0xx_it.o [1]
-NVIC_SetPriority        0x08000425  0x84  Code  Lc  system.o [1]
-PendSV_Handler          0x080008e9   0x2  Code  Gb  stm32f0xx_it.o [1]
-RCC_AHBPeriphClockCmd   0x080005f9  0x20  Code  Gb  stm32f0xx_rcc.o [1]
-Region$$Table$$Base     0x08000870         --   Gb  - Linker created -
-Region$$Table$$Limit    0x08000880         --   Gb  - Linker created -
-SVC_Handler             0x080008e7   0x2  Code  Gb  stm32f0xx_it.o [1]
-SetSysClock             0x0800012f  0xbe  Code  Lc  system_stm32f0xx.o [1]
-SysTick_Config          0x080004a9  0x30  Code  Lc  system.o [1]
-SysTick_Handler         0x080008eb   0x8  Code  Gb  stm32f0xx_it.o [1]
-Sys_ClockInit           0x0800051b  0x14  Code  Gb  system.o [1]
-Sys_ClockTick           0x080004f5   0xc  Code  Gb  system.o [1]
-Sys_ConsoleInit         0x08000551   0x8  Code  Gb  system.o [1]
-Sys_IoInit              0x080004d9  0x1c  Code  Gb  system.o [1]
-SystemCoreClock         0x200000a4   0x4  Data  Gb  system_stm32f0xx.o [1]
-SystemInit              0x080000c1  0x6e  Code  Gb  system_stm32f0xx.o [1]
-Task_LED                0x080006ef  0x7a  Code  Gb  main.o [1]
-Task_LED::state         0x200000b4   0x1  Data  Lc  main.o [1]
-Task_LED::t0            0x200000a8   0x4  Data  Lc  main.o [1]
-Task_LED::t1            0x200000ac   0x4  Data  Lc  main.o [1]
-_GPIO_Clocks            0x080008c8  0x18  Data  Lc  system.o [1]
-_GPIO_Ports             0x2000008c  0x18  Data  Gb  io.o [1]
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x08001eb0          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x08001ec0          --   Gb  - Linker created -
+?main                   0x08001ec1         Code  Gb  cmain.o [5]
+CSTACK$$Base            0x200000c0          --   Gb  - Linker created -
+CSTACK$$Limit           0x200008c0          --   Gb  - Linker created -
+DelayMs                 0x080019ef   0x14  Code  Gb  system.o [1]
+GPIO_Init               0x08001a7d   0xa0  Code  Gb  stm32f0xx_gpio.o [1]
+HardFault_Handler       0x08001f51    0x4  Code  Gb  stm32f0xx_it.o [1]
+IO_Init                 0x08001865   0x5a  Code  Gb  io.o [1]
+IO_Write                0x080018bf   0x42  Code  Gb  io.o [1]
+LCD_Clear               0x080017a9   0x10  Code  Gb  lcdm.o [1]
+LCD_DisplayOn           0x08001799   0x10  Code  Gb  lcdm.o [1]
+LCD_Init                0x080017c9   0x6a  Code  Gb  lcdm.o [1]
+LCD_PutChar             0x08001783   0x16  Code  Gb  lcdm.o [1]
+LCD_SendCmd             0x0800176d   0x16  Code  Gb  lcdm.o [1]
+LCD_SendCmdL            0x0800173f   0x16  Code  Lc  lcdm.o [1]
+LCD_SendData            0x08001755   0x18  Code  Gb  lcdm.o [1]
+LCD_SendDataL           0x080016db   0x64  Code  Lc  lcdm.o [1]
+LCD_SetCursor           0x080017b9   0x10  Code  Gb  lcdm.o [1]
+LCD_putch               0x08001833   0x30  Code  Gb  lcdm.o [1]
+LoadInt                 0x08000689   0x68  Code  Lc  xprintffull.o [3]
+NMI_Handler             0x08001f4f    0x2  Code  Gb  stm32f0xx_it.o [1]
+NVIC_SetPriority        0x0800190d   0x84  Code  Lc  system.o [1]
+PendSV_Handler          0x08001f57    0x2  Code  Gb  stm32f0xx_it.o [1]
+RCC_AHBPeriphClockCmd   0x08001b1d   0x20  Code  Gb  stm32f0xx_rcc.o [1]
+Region$$Table$$Base     0x08001eb0          --   Gb  - Linker created -
+Region$$Table$$Limit    0x08001ec0          --   Gb  - Linker created -
+SVC_Handler             0x08001f55    0x2  Code  Gb  stm32f0xx_it.o [1]
+SetSysClock             0x08001baf   0xbe  Code  Lc  system_stm32f0xx.o [1]
+SysTick_Config          0x08001991   0x30  Code  Lc  system.o [1]
+SysTick_Handler         0x08001f59    0x8  Code  Gb  stm32f0xx_it.o [1]
+Sys_ClockInit           0x08001a03   0x14  Code  Gb  system.o [1]
+Sys_ClockTick           0x080019dd    0xc  Code  Gb  system.o [1]
+Sys_ConsoleInit         0x08001a39    0x8  Code  Gb  system.o [1]
+Sys_IoInit              0x080019c1   0x1c  Code  Gb  system.o [1]
+SystemCoreClock         0x200000a4    0x4  Data  Gb  system_stm32f0xx.o [1]
+SystemInit              0x08001b41   0x6e  Code  Gb  system_stm32f0xx.o [1]
+Task_LED                0x08001cc3   0x7a  Code  Gb  main.o [1]
+Task_LED::state         0x200000b8    0x1  Data  Lc  main.o [1]
+Task_LED::t0            0x200000a8    0x4  Data  Lc  main.o [1]
+Task_LED::t1            0x200000ac    0x4  Data  Lc  main.o [1]
+Task_Print              0x08001d3d   0x18  Code  Gb  main.o [1]
+Task_Print::count       0x200000b0    0x4  Data  Lc  main.o [1]
+_GPIO_Clocks            0x08001f08   0x18  Data  Lc  system.o [1]
+_GPIO_Ports             0x2000008c   0x18  Data  Gb  io.o [1]
+_GenldFull              0x08000c99  0x2aa  Code  Lc  xprintffull.o [3]
+_LdtobFull              0x08000821  0x464  Code  Lc  xprintffull.o [3]
+_LitobFull              0x080006f1  0x12a  Code  Lc  xprintffull.o [3]
+_PrintfFull             0x080000c1  0x5c8  Code  Gb  xprintffull.o [3]
+_Prout                  0x08001f39   0x16  Code  Gb  xprout.o [3]
+_PutcharsFull           0x08000f43   0x30  Code  Lc  xprintffull.o [3]
 __ICFEDIT_region_RAM_end__ {Abs}
-                        0x20001fff        Data  Gb  command line/config [2]
+                        0x20001fff         Data  Gb  command line/config [2]
 __ICFEDIT_region_RAM_start__ {Abs}
-                        0x20000000        Data  Gb  command line/config [2]
-__aeabi_idiv0           0x080006cd        Code  Gb  IntDivZer.o [5]
-__aeabi_uidiv           0x0800061d        Code  Gb  I32DivModFast.o [5]
-__aeabi_uidivmod        0x0800061d        Code  Gb  I32DivModFast.o [5]
-__cmain                 0x08000881        Code  Gb  cmain.o [5]
-__exit                  0x080008b5  0x14  Code  Gb  exit.o [6]
-__iar_data_init3        0x08000849  0x28  Code  Gb  data_init.o [5]
+                        0x20000000         Data  Gb  command line/config [2]
+__aeabi_cdcmple         0x08001079         Code  Gb  DblCmpLe.o [4]
+__aeabi_cdrcmple        0x080010ab         Code  Gb  DblCmpGe.o [4]
+__aeabi_d2iz            0x0800115d         Code  Gb  DblToI32.o [4]
+__aeabi_d2uiz           0x08001181         Code  Gb  DblToI32.o [4]
+__aeabi_ddiv            0x080015f1         Code  Gb  DblDiv.o [4]
+__aeabi_dmul            0x0800146d         Code  Gb  DblMul.o [4]
+__aeabi_dsub            0x0800129f         Code  Gb  DblAddSub.o [4]
+__aeabi_i2d             0x080011b1         Code  Gb  I32ToDbl.o [4]
+__aeabi_idiv            0x080013b9         Code  Gb  I32DivModFast.o [5]
+__aeabi_idiv0           0x080016d9         Code  Gb  IntDivZer.o [5]
+__aeabi_idivmod         0x080013b9         Code  Gb  I32DivModFast.o [5]
+__aeabi_ldiv0           0x080016d5         Code  Gb  I64DivZer.o [5]
+__aeabi_memcpy          0x0800101d         Code  Gb  ABImemcpy.o [5]
+__aeabi_ui2d            0x080011c5         Code  Gb  I32ToDbl.o [4]
+__aeabi_uidiv           0x080013bf         Code  Gb  I32DivModFast.o [5]
+__aeabi_uidivmod        0x080013bf         Code  Gb  I32DivModFast.o [5]
+__aeabi_uldivmod        0x08000fb3         Code  Gb  I64DivMod.o [5]
+__cmain                 0x08001ec1         Code  Gb  cmain.o [5]
+__exit                  0x08001ef5   0x14  Code  Gb  exit.o [6]
+__iar_Dscale            0x080010dd   0x80  Code  Gb  xdscale.o [4]
+__iar_Memchr            0x08000f9b   0x18  Code  Gb  memchr.o [5]
+__iar_Strchr            0x08000f77   0x14  Code  Gb  strchr.o [5]
+__iar_d2uiz             0x08001185         Code  Gb  DblToI32.o [4]
+__iar_data_init3        0x08001e65   0x28  Code  Gb  data_init.o [5]
 __iar_packbits_init_single3
-                        0x0800080d  0x3c  Code  Gb  packbits_init_single.o [5]
-__iar_program_start     0x080008f3        Code  Gb  cstartup_M.o [5]
-__low_level_init        0x0800089b   0x4  Code  Gb  low_level_init.o [3]
-__vector_table          0x08000000        Data  Gb  startup_stm32f051.o [1]
-_call_main              0x0800088d        Code  Gb  cmain.o [5]
-_exit                   0x080008a9        Code  Gb  cexit.o [5]
-_iom                    0x20000038  0x54  Data  Gb  io.o [1]
-_ios                    0x20000000  0x38  Data  Gb  io.o [1]
-_main                   0x08000897        Code  Gb  cmain.o [5]
-_tmTick                 0x200000b0   0x4  Data  Lc  system.o [1]
-clock                   0x08000501   0x6  Code  Gb  system.o [1]
-exit                    0x0800089f   0x8  Code  Gb  exit.o [3]
-init                    0x080006d1  0x1e  Code  Gb  main.o [1]
-main                    0x08000775  0x5a  Code  Gb  main.o [1]
+                        0x08001e29   0x3c  Code  Gb  packbits_init_single.o [5]
+__iar_program_start     0x08001f6d         Code  Gb  cstartup_M.o [5]
+__iar_ui2d              0x080011c9         Code  Gb  I32ToDbl.o [4]
+__low_level_init        0x08001edb    0x4  Code  Gb  low_level_init.o [3]
+__putch                 0x08001a41    0xa  Code  Gb  system.o [1]
+__vector_table          0x08000000         Data  Gb  startup_stm32f051.o [1]
+__write                 0x08001a4b   0x32  Code  Gb  system.o [1]
+_call_main              0x08001ecd         Code  Gb  cmain.o [5]
+_exit                   0x08001ee9         Code  Gb  cexit.o [5]
+_iom                    0x20000038   0x54  Data  Gb  io.o [1]
+_ios                    0x20000000   0x38  Data  Gb  io.o [1]
+_main                   0x08001ed7         Code  Gb  cmain.o [5]
+_tmTick                 0x200000b4    0x4  Data  Lc  system.o [1]
+clock                   0x080019e9    0x6  Code  Gb  system.o [1]
+div                     0x080016b3   0x20  Code  Gb  div.o [3]
+exit                    0x08001edf    0x8  Code  Gb  exit.o [3]
+init                    0x08001ca5   0x1e  Code  Gb  main.o [1]
+main                    0x08001d69   0x5e  Code  Gb  main.o [1]
+printf                  0x08001dc9   0x24  Code  Gb  printf.o [3]
+putchar                 0x08001e8d   0x24  Code  Gb  putchar.o [3]
+strlen                  0x08000f8b   0x10  Code  Gb  strlen.o [5]
 
 
 [1] = C:\Users\dell\Documents\ARM Programlama Kursu\IAR\STM32F0\Projects\2_LCD\Debug\Obj
@@ -286,9 +362,9 @@ main                    0x08000775  0x5a  Code  Gb  main.o [1]
 [5] = rt6M_tl.a
 [6] = shb_l.a
 
-  2 310 bytes of readonly  code memory
-    152 bytes of readonly  data memory
-  2 229 bytes of readwrite data memory
+  8 024 bytes of readonly  code memory
+    172 bytes of readonly  data memory
+  2 233 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

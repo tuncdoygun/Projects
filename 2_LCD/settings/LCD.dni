@@ -41,7 +41,7 @@ stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=-1880222193
+Checksum=-378980414
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
