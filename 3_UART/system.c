@@ -66,7 +66,7 @@ void Sys_ClockInit(void)
 
 void Sys_ConsoleInit()
 {
-  //LCD_Init();
+  LCD_Init();
   UART_Init(g_conUART, 9600);
   //setvbuf(stdout, NULL, _IONBF, 0); // standart lib içinde.Buffer'ý devre dýþý býrakmak için.
 									  // bazen buffer dolmadýðý için ekranda birþey görülmüyor.Bufferlý çalýþtýðý zaman hýzlý ama senkronluðu kayboluyor.
@@ -74,7 +74,7 @@ void Sys_ConsoleInit()
 
 void __putch(unsigned char c)
 {
-  //LCD_putch(c);
+  LCD_putch(c);
 }
 
 size_t __write(int handle, const unsigned char *buffer, size_t size)

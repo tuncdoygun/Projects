@@ -105,7 +105,7 @@ void Task_Print(void)
 {
   static unsigned count;
   
-  //printf("\nSAYI:%10u", ++count); // putch fonksiyonu LCD'ye yazdýðý için bu fonksiyon lcd'ye yazar.
+  printf("\nSAYI:%10u", ++count); // putch fonksiyonu LCD'ye yazdýðý için bu fonksiyon lcd'ye yazar.
   UART_printf("Count: %10lu\r", count++);
 }
 
@@ -127,7 +127,7 @@ int main()
   
   while(1) {
     Task_LED();
-    //Task_Print();
+    Task_Print();
        
     /*{ // Echo test
       unsigned char c;
@@ -136,7 +136,7 @@ int main()
           UART_Send(g_conUART, c);
         }
     }*/
-    {
+    /*{
       unsigned char c;
       if(UART_DataReady(g_conUART)){
         UART_putch('\n');
@@ -146,7 +146,7 @@ int main()
         } while(c != '\r');
         UART_putch('\n');
       }
-    }
+    }*/
     
   }
   //return 0;
