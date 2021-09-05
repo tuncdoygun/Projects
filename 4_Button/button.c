@@ -39,7 +39,7 @@ static void BTN_Scan(int btIdx)
       }
 #ifdef BTN_LONG_PRESS
       else {
-        _bts[btIdx].acc = 0;
+        _bts[btIdx].lState = 0;
       }
 #endif
     }
