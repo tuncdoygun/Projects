@@ -11,6 +11,7 @@ typedef struct {
   int dbc;      // debounce counter, kac kere saydýktan sonra buton durumunu belirleyecegi
 #ifdef BTN_LONG_PRESS
   int acc;      // active counter
+  int lState; // long press active 
 #endif
 } BTN_PIN;
 

@@ -77,10 +77,10 @@ IO_PIN _ios[] = {
   // LCD
   {IO_PORT_B, 13},
   {IO_PORT_B, 14},
-  {IO_PORT_C, 6},
-  {IO_PORT_C, 7},
-  {IO_PORT_B, 3},
-  {IO_PORT_B, 4},
+  {IO_PORT_A, 8},
+  {IO_PORT_A, 9},
+  {IO_PORT_A, 10},
+  {IO_PORT_A, 11},
   
   // UART
   {IO_PORT_B, 7},

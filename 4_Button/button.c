@@ -33,21 +33,28 @@ static void BTN_Scan(int btIdx)
       _bts[btIdx].dbc = 0;
       
       if (_bts[btIdx].cState == _bts[btIdx].aState){ // pullup ise aktif state = 0'dýr.
-#ifdef BTN_LONG_PRESS
-        _bts[btIdx].acc = 0;
-#endif
         // Signal mekanizmasý, butona baþarýlý þekilde basýldý.
         // g_Buttons[btIdx] = 1;   // binary semaphore
         ++g_Buttons[btIdx];     // counting semaphore
       }
+#ifdef BTN_LONG_PRESS
+      else {
+        _bts[btIdx].acc = 0;
+      }
+#endif
     }
+  } else {
+    // max basary sayisina ulasilamadan hata geldi
+    // sayaci sifirliyoruz
+    _bts[btIdx].dbc = 0;   
   }
   
 #ifdef BTN_LONG_PRESS
-  if(g_ButtonsL[btIdx] == 0) { // semaphore bayragi
+  if(_bts[btIdx].lState == 0) { // semaphore bayragi
     if(_bts[btIdx].cState == _bts[btIdx].aState) {
       if(++_bts[btIdx].acc >= BT_LP_TIME){
         _bts[btIdx].acc = 0;
+        _bts[btIdx].lState = 1;
         g_ButtonsL[btIdx] = 1; // binary semaphore        
       }
     }

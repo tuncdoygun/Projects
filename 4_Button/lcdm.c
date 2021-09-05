@@ -49,7 +49,7 @@ void LCD_SendCmd(unsigned char c)
 {
   IO_Write(IOP_LCD_RS, 0); // RS=0 komut gonderim
 
-  LCD_SendDataL(c);
+  LCD_SendData(c);
 }
 
 // LCD Module 8-bit karakter gonderir
