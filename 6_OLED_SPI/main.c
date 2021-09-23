@@ -17,41 +17,6 @@ void init(void)
   IO_Init(IOP_LED);
 }
 
-//int c; // debug modda global deðiþkenlerin deðeri görülebiliyor.IO_Read() için.
-// 27.07.2021
-/*void Task_LED(void)
-{
-  static enum {
-    S_LED_OFF,
-    S_LED_ON,
-  } state = S_LED_OFF;
-   
-  static clock_t t0, t1; // t0 duruma ilk geçiþ saati, t1 güncel saat
-  
-  t1 = clock(); // bu fonksiyona girdiðinde o andaki saat
-  
-  switch (state){
-  case S_LED_OFF:
-    if (t1 >= t0 + 9 * CLOCKS_PER_SEC / 10){ // 9/10 saniye geçmiþ demek
-      IO_Write(IOP_LED, 1);
-      
-      t0 = t1;
-      state = S_LED_ON;
-    }
-    break;
-  
-  case S_LED_ON:
-    if (t1 >= t0 +  CLOCKS_PER_SEC / 10){ // 9/10 saniye geçmiþ demek
-      IO_Write(IOP_LED, 0);
-      
-      t0 = t1;
-      state = S_LED_OFF;
-    }    
-    break;
-  }
-}*/
-//
-
 // 29.07.2021
 // yukardakine göre daha optimize
 void Task_LED(void)
@@ -97,33 +62,6 @@ int main()
 {
   // Baþlangýç yapýlandýrmalarý
   init();
- 
-  /**** TEST-1
-  IO_Write(IOP_LED, 1); // LED-ON
-  //c = IO_Read(IOP_LED);
-  
-  IO_Write(IOP_LED, 0); // LED-OFF
-  //c = IO_Read(IOP_LED);
-  
-  IO_Write(IOP_LED, 1);
-  //c = IO_Read(IOP_LED);
-  
-  IO_Write(IOP_LED,0);
-  //c = IO_Read(IOP_LED);
-  ***/
-  
-  /***** TEST-2
-  // GPIOB<5> = 1
-  IO_Init(IOP_TEST, IO_MODE_OUTPUT);
-  IO_Write(IOP_TEST, 1);
-  *****/
-  
-  /***** TEST-3
-  // GPIOA<3> input
-  IO_Init(IOP_MYINPUT, IO_MODE_INPUT);
-  int c;
-  c = IO_Read(IOP_MYINPUT);
-  *****/
   
   while(1) {
     Task_LED();

@@ -3,6 +3,9 @@
 
 #include "stm32f0xx_gpio.h"
 
+#define IO_OLED_RES // kullanýlacak chipte cs veya res olup olmama durumu icin
+#define IO_OLED_CS
+
 enum {
   IO_PORT_A,
   IO_PORT_B,
@@ -44,22 +47,65 @@ enum {
 
 enum {
   IOP_LED,      // Bluepill LED (C13)
-  IOP_TEST,     // Test amaçlý(B5)
-  IOP_MYINPUT,  // Test amaçlý okuma A3
+  
+  // SPI1
+  IOP_SPI_SCK,
+  IOP_SPI_MISO,
+  IOP_SPI_MOSI,
+  
+  // OLED
+#ifdef IO_OLED_VDD
+  IOP_OLED_VDD, // yazilimsal spi kullanilacaksa, yani VDD GPIO'ya baglandiysa
+#endif
+  
+#ifdef IO_OLED_GND
+  IOP_OLED_GND, // yazýlýmsal spi kullanýlacaksa,yani GND GPIO'ya baðlandýysa
+#endif
+  
+#ifdef IO_OLED_RES
+  IOP_OLED_RES,
+#endif
+  
+  IOP_OLED_DC,
+  
+#ifdef IO_OLED_CS
+  IOP_OLED_CS
+#endif
 };
 
 #ifdef _IOS_ // birkere tanýmlanmasý gereken
 
 IO_PIN _ios[] = {
   {IO_PORT_C, 9} ,
-  {IO_PORT_B, 5} ,  // Test amaçlý(B5)
-  {IO_PORT_A, 3} ,
+  
+  // SPI1
+  {IO_PORT_A, 5}, // SCK
+  {IO_PORT_A, 6}, // MISO
+  {IO_PORT_A, 7}, // MOSI
+  
+  // OLED
+#ifdef IO_OLED_VDD
+#endif
+  
+#ifdef IO_OLED_GND
+#endif
+  
+#ifdef IO_OLED_RES
+  {IO_PORT_C, 0}, // RES
+#endif
+  
+  {IO_PORT_C, 1}, // DC
+  
+#ifdef IO_OLED_CS
+  {IO_PORT_C, 2}, // CS
+#endif
 };
 
 IO_MODE _iom[] = {
-  {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL},
-  {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL},
-  {IO_MODE_INPUT, IO_OTYPE_PP, IO_PUPD_NOPULL},
+  {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL}, // Bluepill LED (C13)
+  {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_DOWN},       // SCK
+  {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_DOWN},       // MOSI
+  {IO_MODE_INPUT, IO_OTYPE_PP, IO_PUPD_DOWN},    // MISO
 };
 
 GPIO_TypeDef *_GPIO_Ports[] = {
