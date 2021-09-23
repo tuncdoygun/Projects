@@ -3,6 +3,11 @@
 
 #include "stm32f0xx.h"
 #include "system.h"
+#include "oled.h"
+
+#define _STDIN  0
+#define _STDOUT 1
+#define _STDERR 2
 
 static volatile clock_t _tmTick;
 
@@ -50,4 +55,46 @@ void DelayMs(unsigned int ms) // Sys_ClockInit fonksiyonunda _tmTick 1ms'de bir 
 void Sys_ClockInit(void)
 {
   SysTick_Config(SystemCoreClock / CLOCKS_PER_SEC); // 1 ms kesme.
+}
+
+////////////////////////////////////////
+// KONSOL FONKSÝYONLARI
+// printf'in nereye yazacaðýný belirtmek için alt seviyeli write callback fonksiyonunu bizim yazmamýz gerekiyor
+// biz yazmasak da printf fonksiyonu var.Normalde write fonksiyonu var fakat içi boþ,biz yazýyoruz. __weak olarak tanýmlý
+// çoðu derleyicide printf bu þekilde çalýþýr.Yani __write fonksiyonunu çaðýrýr.
+
+void Sys_ConsoleInit()
+{
+  OLED_Start(0);
+
+#ifndef __IAR_SYSTEMS_ICC__
+  setvbuf(stdout, NULL, _IONBF, 0);
+#endif									  // bazen buffer dolmadýðý için ekranda birþey görülmüyor.Bufferlý çalýþtýðý zaman hýzlý ama senkronluðu kayboluyor.
+}
+
+void _putch(unsigned char c)
+{
+  OLED_putch(c);
+}
+
+#ifdef __IAR_SYSTEMS_ICC__
+size_t __write(int handle, const unsigned char *buffer, size_t size)
+#else
+size_t _write(int handle, const unsigned char *buffer, size_t size)
+#endif
+{
+  size_t nChars = 0;
+  
+  if (buffer == NULL)
+    return 0;
+  
+  if (handle != _STDOUT && handle != _STDERR)
+    return 0;
+  
+  while (size--) {
+    _putch(*buffer++);
+    ++nChars;
+  }
+  
+  return nChars;
 }

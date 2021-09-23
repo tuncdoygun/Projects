@@ -7,6 +7,7 @@ clock_t clock(void);
 void Sys_ClockInit(void);
 void DelayMs(unsigned int); // td
 void Sys_IoInit(void);
+void Sys_ConsoleInit(void);
 
 // 29.07.2021
 /*void __delay(uint32_t ncy); // number of cycles

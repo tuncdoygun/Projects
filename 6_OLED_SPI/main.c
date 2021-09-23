@@ -16,6 +16,9 @@ void init(void)
   // LED Init
   IO_Write(IOP_LED, 0);
   IO_Init(IOP_LED);
+  
+  // Konsol Init
+  Sys_ConsoleInit();
 }
 
 // 29.07.2021
@@ -59,33 +62,83 @@ void Task_LED(void)
 }
 //
 
+void Task_Print(void)
+{
+  static unsigned count;
+  
+  printf("SAYI:%10u\r", ++count);
+}
+
 int main()
 {
+  int c;
+  
   // Baþlangýç yapýlandýrmalarý
   init();
   
-  OLED_Start(0);
+  // OLED_Start(0);
   // OLED_Start(1); basasagi cevirmek icin
   
-  //OLED_SetPixel(0, 0, OLED_SETPIXEL);
+  /* OLED_SetPixel(0, 0, OLED_SETPIXEL);
   OLED_SetPixel(0, 5, OLED_SETPIXEL);
   OLED_SetPixel(127, 63, OLED_SETPIXEL);
   OLED_SetPixel(61, 19, OLED_SETPIXEL);
-  OLED_SetPixel(100, 20, OLED_SETPIXEL);
-  
+
   OLED_SetPixel(61, 19, OLED_INVPIXEL);
   OLED_SetPixel(61, 19, OLED_INVPIXEL);
   
   OLED_SetPixel(0, 0, OLED_CLRPIXEL);
+  DelayMs(2000);
+  
+  OLED_SetPage(2);
+  OLED_SetSegment(26);
   
   OLED_Data(0x7E);
   OLED_Data(0x11);
   OLED_Data(0x11);
   OLED_Data(0x11);
   OLED_Data(0x7E); 
+  DelayMs(2000);
+  
+  OLED_Scroll(1);
+  OLED_Scroll(1);
+  OLED_Scroll(1);
+  DelayMs(2000);
+  
+  for (c = 0; c < NPGS * NSEG; ++c)
+    _DspRam[c] = 0xAA;
+  
+  OLED_UpdateDisplay();  
+  DelayMs(2000);
+  
+  
+  OLED_SetFont(FNT_LARGE);
+  OLED_SetCursor(0, 0);
+  OLED_PutChar('D');
+  OLED_PutChar('e');
+  OLED_PutChar('n');
+  OLED_NewLine();
+  OLED_PutChar('e');
+  OLED_PutChar('m');
+  OLED_PutChar('e');  
+  DelayMs(2000);
+  */
+  
+
+  OLED_SetFont(FNT_LARGE);
+  printf("Hello, world!\n");
+  OLED_SetFont(FNT_SMALL);
+  OLED_SetCursor(2, 0);
+  printf("Merhaba dünya!\n");
+  
+  printf("ABCÇDEFGÐHIÝJKLMNOÖPRSÞTUÜVYZ\n");
+  printf("abcçdefgðhýijklmnoöprsþtuüvyz\n");
+  printf("012345678901234567890123456\n");
+  OLED_SetFont(FNT_LARGE);
   
   while(1) {
     Task_LED();
+    Task_Print();
   }
   //return 0;
 }
