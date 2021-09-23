@@ -39,6 +39,14 @@ clock_t clock(void)
   return _tmTick;
 }
 
+void DelayMs(unsigned int ms) // Sys_ClockInit fonksiyonunda _tmTick 1ms'de bir artar.
+{
+  clock_t t0 = clock();
+  uint32_t delay_count = t0 + ms;
+
+  while(_tmTick <= delay_count); 
+}
+
 void Sys_ClockInit(void)
 {
   SysTick_Config(SystemCoreClock / CLOCKS_PER_SEC); // 1 ms kesme.

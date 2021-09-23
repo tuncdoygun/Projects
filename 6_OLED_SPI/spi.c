@@ -28,8 +28,8 @@ void HSPI_Start(void) // bastaki H hardware
   
   // 3 - SPI Init structure parametreleri yapilandirilir.
   spiInit.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
-  spiInit.SPI_CPHA = SPI_CPOL_Low; // Mode-0
-  spiInit.SPI_CPOL = SPI_CPHA_1Edge;
+  spiInit.SPI_CPHA = SPI_CPHA_1Edge; // Mode-0
+  spiInit.SPI_CPOL = SPI_CPOL_Low;
   spiInit.SPI_DataSize = SPI_DataSize_8b;
   spiInit.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
   spiInit.SPI_FirstBit = SPI_FirstBit_MSB;
@@ -51,9 +51,9 @@ uint8_t HSPI_Data(uint8_t val)
   
   SPI_SendData8(SPI_PORT, val);
   
-  while(!SPI_I2S_GetFlagStatus(SPI_PORT, SPI_I2S_FLAG_RXNE)); // normalde almadan çýkmaz gibi dursa da,tx ile rx ayný anda çalýþýyor.
+  //while(!SPI_I2S_GetFlagStatus(SPI_PORT, SPI_I2S_FLAG_RXNE)); // normalde almadan çýkmaz gibi dursa da,tx ile rx ayný anda çalýþýyor.
 
-  val = SPI_ReceiveData8(SPI_PORT);
+  //val = SPI_ReceiveData8(SPI_PORT);
   
   return val;
 }

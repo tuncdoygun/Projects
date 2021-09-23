@@ -3,6 +3,7 @@
 
 #include "system.h"
 #include "io.h"
+#include "oled.h"
 
 void init(void)
 {
@@ -62,6 +63,26 @@ int main()
 {
   // Baþlangýç yapýlandýrmalarý
   init();
+  
+  OLED_Start(0);
+  // OLED_Start(1); basasagi cevirmek icin
+  
+  //OLED_SetPixel(0, 0, OLED_SETPIXEL);
+  OLED_SetPixel(0, 5, OLED_SETPIXEL);
+  OLED_SetPixel(127, 63, OLED_SETPIXEL);
+  OLED_SetPixel(61, 19, OLED_SETPIXEL);
+  OLED_SetPixel(100, 20, OLED_SETPIXEL);
+  
+  OLED_SetPixel(61, 19, OLED_INVPIXEL);
+  OLED_SetPixel(61, 19, OLED_INVPIXEL);
+  
+  OLED_SetPixel(0, 0, OLED_CLRPIXEL);
+  
+  OLED_Data(0x7E);
+  OLED_Data(0x11);
+  OLED_Data(0x11);
+  OLED_Data(0x11);
+  OLED_Data(0x7E); 
   
   while(1) {
     Task_LED();

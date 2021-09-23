@@ -118,23 +118,23 @@ int main()
   LCD_DisplayOn(LCD_MODE_ON | LCD_MODE_CURSOR);
   
   LCD_SetCursor(0x00);
-  LCD_PutChar('D'); // cursor otomatik 1 arttýðýndan dolayý
-  LCD_PutChar('e');
-  LCD_PutChar('n');
-  LCD_PutChar('e');
-  LCD_PutChar('m');
-  LCD_PutChar('e');
+  LCD_PutChar('S'); // cursor otomatik 1 arttýðýndan dolayý
+  LCD_PutChar('a');
+  LCD_PutChar('p');
+  LCD_PutChar('s');
+  LCD_PutChar('a');
+  LCD_PutChar('l');
   
   LCD_SetCursor(0x40); // 64: ikinci satýr baþý
-  LCD_PutChar('T'); // cursor otomatik 1 arttýðýndan dolayý
-  LCD_PutChar('e');
+  LCD_PutChar('B'); // cursor otomatik 1 arttýðýndan dolayý
+  LCD_PutChar('u');
   LCD_PutChar('s');
-  LCD_PutChar('t');
+  LCD_PutChar('e');
   
   
   while(1) {
     Task_LED();
-    Task_Print();
+    //Task_Print();
   }
   //return 0;
 }
