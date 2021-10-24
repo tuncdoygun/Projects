@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <math.h>
 
 #include "system.h"
 #include "io.h"
 #include "oled.h"
+#include "hi2c.h"
 
 void init(void)
 {
@@ -62,6 +64,19 @@ void Task_LED(void)
 }
 //
 
+void DrawSin(void)
+{
+  int x, y;
+  float fx, pi = 3.14159265359;
+  
+  // y = A * sin(2 * pi * x);
+  for (x = 0; x < 128; ++x) {
+    fx = 32 + 30.0 * sin(2 * pi * (x / 50.0));
+    y = 63 - (int)(fx + 0.5);
+    OLED_SetPixel(x, y, OLED_SETPIXEL);
+  }
+}
+
 void Task_Print(void)
 {
   static unsigned count;
@@ -69,13 +84,8 @@ void Task_Print(void)
   printf("SAYI:%10u\r", ++count);
 }
 
-int main()
+void OLED_Test(void)
 {
-  int c;
-  
-  // Baþlangýç yapýlandýrmalarý
-  init();
-  
   // OLED_Start(0);
   // OLED_Start(1); basasagi cevirmek icin
   
@@ -100,11 +110,17 @@ int main()
   OLED_Data(0x7E); 
   DelayMs(2000);
   
-  OLED_Scroll(1);
-  OLED_Scroll(1);
-  OLED_Scroll(1);
-  DelayMs(2000);
+  c = OLED_GetPixel(0, 0);
+  c = OLED_GetPixel(0, 1);
   
+  OLED_Scroll(1);
+  OLED_Scroll(1);
+  OLED_Scroll(1);
+  DelayMs(2000); */
+  
+  DrawSin();
+  
+  /*
   for (c = 0; c < NPGS * NSEG; ++c)
     _DspRam[c] = 0xAA;
   
@@ -125,7 +141,7 @@ int main()
   */
   
 
-  OLED_SetFont(FNT_LARGE);
+  /*OLED_SetFont(FNT_LARGE);
   printf("Hello, world!\n");
   OLED_SetFont(FNT_SMALL);
   OLED_SetCursor(2, 0);
@@ -134,8 +150,44 @@ int main()
   printf("ABCÇDEFGÐHIÝJKLMNOÖPRSÞTUÜVYZ\n");
   printf("abcçdefgðhýijklmnoöprsþtuüvyz\n");
   printf("012345678901234567890123456\n");
-  OLED_SetFont(FNT_LARGE);
+  OLED_SetFont(FNT_LARGE);*/
+}
+
+void I2C_Test(void)
+{
+  HI2C_Init(I2C_1, 100000);
   
+  if(HI2C_Start(I2C_1, 0xA0)) { // 1010 000x
+    HI2C_Stop(I2C_1);
+    
+    printf("24LC128 memory bulundu!\n");
+  } else {
+    printf("HATA: 24LC128!\n");
+  }
+           
+  /* if (HI2C_Start(I2C_1, 0x78)) {      // 1010 000x
+    HI2C_Stop(I2C_1);
+    
+    printf("SSD1306 bulundu!\n");
+  }
+  else {
+    printf("HATA: SSD1306!\n"); 
+  } */ 
+}
+
+int main()
+{
+  // int c;
+  
+  // Baþlangýç yapýlandýrmalarý
+  init();
+  
+  //OLED_Test();
+  
+  OLED_SetFont(FNT_SMALL);
+  OLED_SetCursor(2, 0);
+  I2C_Test();
+
   while(1) {
     Task_LED();
     Task_Print();

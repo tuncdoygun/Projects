@@ -48,6 +48,12 @@ enum {
 enum {
   IOP_LED,      // Bluepill LED (C13)
   
+  // I2C
+  IOP_I2C1_SCL,
+  IOP_I2C1_SDA,
+  IOP_I2C2_SCL,
+  IOP_I2C2_SDA,  
+  
   // SPI1
   IOP_SPI_SCK,
   IOP_SPI_MISO,
@@ -78,6 +84,12 @@ enum {
 IO_PIN _ios[] = {
   {IO_PORT_C, 9} ,
   
+  // I2C
+  { IO_PORT_B, 8 },    // SCL1
+  { IO_PORT_B, 9 },    // SDA1
+  { IO_PORT_B, 10 },   // SCL2
+  { IO_PORT_B, 11 },   // SDA2  
+  
   // SPI1
   {IO_PORT_A, 5}, // SCK
   {IO_PORT_A, 6}, // MISO
@@ -103,9 +115,19 @@ IO_PIN _ios[] = {
 
 IO_MODE _iom[] = {
   {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL}, // Bluepill LED (C13)
+  
+  // I2C
+  {IO_MODE_AF, IO_OTYPE_OD, IO_PUPD_DOWN},      // SCL1
+  {IO_MODE_AF, IO_OTYPE_OD, IO_PUPD_DOWN},      // SDA1
+  {IO_MODE_AF, IO_OTYPE_OD, IO_PUPD_DOWN},      // SCL2
+  {IO_MODE_AF, IO_OTYPE_OD, IO_PUPD_DOWN},      // SDA2
+  
+  // SPI1
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_DOWN},       // SCK
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_DOWN},       // MOSI
   {IO_MODE_AF, IO_OTYPE_PP, IO_PUPD_DOWN},       // MISO -- Hoca input olarak tanimlamis.Calismadi.
+  
+  // OLED
   {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL}, // RES
   {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL}, // DC
   {IO_MODE_OUTPUT, IO_OTYPE_PP, IO_PUPD_NOPULL}, // CS 
